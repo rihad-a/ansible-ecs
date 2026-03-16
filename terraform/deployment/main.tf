@@ -15,18 +15,3 @@ subnet-map_public_ip_on_launch_public    = var.subnet-map_public_ip_on_launch_pu
 subnet-map_public_ip_on_launch_private   = var.subnet-map_public_ip_on_launch_private
 
 }
-
-# ALB Module
-
-module "alb" {
-  source = "./modules/alb"
-
-
-application-port                         = var.application-port
-
-  # Use these outputs
-  vpc_id            = module.aws_vpc.vpc-id
-  subnetpub1_id     = module.aws_vpc.subnet-pub1
-  subnetpub2_id     = module.aws_vpc.subnet-pub2
-  certificate_arn   = module.route53.certificate_arn
-}
